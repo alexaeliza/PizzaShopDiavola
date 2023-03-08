@@ -22,7 +22,7 @@ public class OrdersGUIController {
     @FXML
     private ComboBox<Integer> orderQuantity;
     @FXML
-    private TableView orderTable;
+    private TableView<MenuDataModel> orderTable;
     @FXML
     private TableColumn tableQuantity;
     @FXML
@@ -104,7 +104,7 @@ public class OrdersGUIController {
             System.out.println("Total: " + getTotalAmount());
             System.out.println("--------------------------");
             PaymentAlert pay = new PaymentAlert(service);
-            pay.showPaymentAlert(tableNumber, this.getTotalAmount());
+            pay.showPaymentAlert(tableNumber, getTotalAmount());
         });
     }
 
