@@ -6,6 +6,9 @@ import pizzashop.repository.MenuRepository;
 import pizzashop.repository.PaymentRepository;
 import pizzashop.service.PizzaService;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.Serializable;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -86,5 +89,42 @@ class ServiceTest implements Serializable, Cloneable {
         basicTestBVA(0, amountMaxMinus1);
         float amountMaxPlus1 = Float.MAX_VALUE + 1;
         basicTestBVA(0, amountMaxPlus1);
+    }
+
+    @Test
+    void soldTotalValid1() throws IOException {
+        PaymentType paymentType = PaymentType.Cash;
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("data/payments.txt"));
+        bufferedWriter.write("0,Cash,10.0\n");
+        bufferedWriter.write("1,Card,10.0\n");
+        bufferedWriter.write("3,Cash,12.0\n");
+        bufferedWriter.write("2,Card,100.0\n");
+        bufferedWriter.close();
+        setUp();
+
+        assertEquals(22.0, pizzaService.getTotalAmount(paymentType));
+    }
+
+    @Test
+    void soldTotalValid2() throws IOException {
+        PaymentType paymentType = PaymentType.Cash;
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("data/payments.txt"));
+        bufferedWriter.write("1,Card,10.0\n");
+        bufferedWriter.write("2,Card,100.0\n");
+        bufferedWriter.close();
+        setUp();
+
+        assertEquals(0.0, pizzaService.getTotalAmount(paymentType));
+    }
+
+    @Test
+    void soldTotalInvalid() throws IOException {
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("data/payments.txt"));
+        bufferedWriter.write("1,Card,10.0\n");
+        bufferedWriter.write("2,Card,100.0\n");
+        bufferedWriter.close();
+        setUp();
+
+        assertThrows(IllegalArgumentException.class, () -> pizzaService.getTotalAmount(PaymentType.valueOf("cash")));
     }
 }
