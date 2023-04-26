@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="03_PizzaShop" />
         <module name="PizzaShop" />
+        <module name="PizzaShopDiavola" />
       </profile>
     </annotationProcessing>
   </component>

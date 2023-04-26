@@ -10,7 +10,7 @@ import java.io.Serializable;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class ServiceTest implements Serializable, Cloneable {
+class ServiceTest {
     static PizzaService pizzaService;
     static MenuRepository menuRepository;
     static PaymentRepository paymentRepository;
