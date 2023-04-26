@@ -11,10 +11,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Serializable;
 
-import static org.junit.jupiter.api.Assertions.*;
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class ServiceTest implements Serializable, Cloneable {
+class ServiceTest {
+
     static PizzaService pizzaService;
     static MenuRepository menuRepository;
     static PaymentRepository paymentRepository;
