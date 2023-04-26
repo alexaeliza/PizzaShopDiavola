@@ -9,7 +9,7 @@ import pizzashop.service.PizzaService;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Serializable;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 class ServiceTest {
