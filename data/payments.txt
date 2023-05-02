@@ -1,0 +1,10 @@
+0,Cash,0.0
+0,Cash,0.0
+1,Cash,10.0
+2,Card,15.0
+1,Cash,10.0
+2,Card,15.0
+1,Cash,10.0
+2,Card,15.0
+1,Cash,10.0
+2,Card,15.0
