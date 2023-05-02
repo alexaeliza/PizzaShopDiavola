@@ -1,4 +1,4 @@
-package lab4;
+package pizzashop.lab4;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -12,15 +12,16 @@ import pizzashop.service.PizzaService;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
 
 @ExtendWith(MockitoExtension.class)
-public class PizzaServiceStep3Test {
+public class PizzaServiceStep2Test {
     static PizzaService pizzaService;
     static MenuRepository menuRepository;
     static PaymentRepository paymentRepository;
 
     @BeforeAll
-    static void setUp() throws FileNotFoundException {
+    static void setUp() throws FileNotFoundException{
         PrintWriter writer = new PrintWriter("data/payments.txt");
         writer.print("");
         writer.close();
@@ -28,11 +29,12 @@ public class PizzaServiceStep3Test {
         paymentRepository=new PaymentRepository();
         pizzaService=new PizzaService(menuRepository,paymentRepository);
 
-        Payment payment1 = new Payment(1, PaymentType.Cash, 10.0);
-        Payment payment2 = new Payment(2, PaymentType.Card, 15.0);
-        pizzaService.addPayment(payment1.getTableNumber(),payment1.getType(),payment1.getAmount());
-        pizzaService.addPayment(payment2.getTableNumber(),payment2.getType(),payment2.getAmount());
+        Payment payment1=mock(Payment.class);
+        Payment payment2=mock(Payment.class);
+        pizzaService.addPayment(payment1.getTableNumber(), PaymentType.Cash,payment1.getAmount());
+        pizzaService.addPayment(payment2.getTableNumber(),PaymentType.Cash,payment2.getAmount());
     }
+
 
     @Test
     void getPaymentsTest()  {
@@ -41,6 +43,6 @@ public class PizzaServiceStep3Test {
 
     @Test
     void getTotalAmountTest(){
-        assertEquals(10.0, pizzaService.getTotalAmount(PaymentType.Cash));
+        assertEquals(0, pizzaService.getTotalAmount(PaymentType.Cash));
     }
 }

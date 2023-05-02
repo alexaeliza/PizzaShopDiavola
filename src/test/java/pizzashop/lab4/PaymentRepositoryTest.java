@@ -1,4 +1,4 @@
-package lab4;
+package pizzashop.lab4;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
