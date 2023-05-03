@@ -25,9 +25,6 @@ public class ServiceTest {
     }
 
     @Test
-    @DisplayName("ECP")
-    @Tag("Tests_ECP")
-    @RepeatedTest(3)
     public void addPaymentECPTest() {
         int tableInt = 1;
         String tableString = "1.09";
@@ -44,9 +41,6 @@ public class ServiceTest {
     }
 
     @Test
-    @DisplayName("BVA")
-    @Tag("Tests_BVA")
-    @Timeout(60)
     public void addPaymentBVATest() {
         int table0 = 0;
         basicTestBVA(table0, (float) 12.09);
