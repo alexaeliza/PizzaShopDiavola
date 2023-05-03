@@ -21,7 +21,7 @@ public class PizzaServiceStep2Test {
     static PaymentRepository paymentRepository;
 
     @BeforeAll
-    static void setUp() throws FileNotFoundException{
+    public static void setUp() throws FileNotFoundException{
         PrintWriter writer = new PrintWriter("data/payments.txt");
         writer.print("");
         writer.close();
@@ -37,12 +37,12 @@ public class PizzaServiceStep2Test {
 
 
     @Test
-    void getPaymentsTest()  {
+    public void getPaymentsTest()  {
         assertEquals(2,pizzaService.getPayments().size());
     }
 
     @Test
-    void getTotalAmountTest(){
+    public void getTotalAmountTest(){
         assertEquals(0, pizzaService.getTotalAmount(PaymentType.Cash));
     }
 }

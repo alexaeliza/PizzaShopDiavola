@@ -20,7 +20,7 @@ public class PaymentRepositoryTest {
      PaymentRepository paymentRepository=new PaymentRepository();
 
     @Test
-    void testAddAndGetAll()  {
+    public void testAddAndGetAll()  {
         Payment payment1 = new Payment(1, PaymentType.Cash, 10.0);
         Payment payment2 = new Payment(2, PaymentType.Card, 15.0);
 
@@ -33,7 +33,7 @@ public class PaymentRepositoryTest {
     }
 
     @Test
-    void testWriteAll() throws IOException {
+    public void testWriteAll() throws IOException {
         Payment payment1 = new Payment(1, PaymentType.Cash, 10.0);
         Payment payment2 = new Payment(2, PaymentType.Card, 15.0);
         paymentRepository.add(payment1);

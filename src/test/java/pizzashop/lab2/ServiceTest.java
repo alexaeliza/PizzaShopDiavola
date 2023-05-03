@@ -12,8 +12,7 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-class ServiceTest {
-
+public class ServiceTest {
     static PizzaService pizzaService;
     static MenuRepository menuRepository;
     static PaymentRepository paymentRepository;
@@ -29,7 +28,7 @@ class ServiceTest {
     @DisplayName("ECP")
     @Tag("Tests_ECP")
     @RepeatedTest(3)
-    void addPaymentECPTest() {
+    public void addPaymentECPTest() {
         int tableInt = 1;
         String tableString = "1.09";
         float amount = (float) 12.09;
@@ -48,7 +47,7 @@ class ServiceTest {
     @DisplayName("BVA")
     @Tag("Tests_BVA")
     @Timeout(60)
-    void addPaymentBVATest() {
+    public void addPaymentBVATest() {
         int table0 = 0;
         basicTestBVA(table0, (float) 12.09);
 
@@ -91,7 +90,7 @@ class ServiceTest {
     }
 
     @Test
-    void soldTotalValid1Test() throws IOException {
+    public void soldTotalValid1Test() throws IOException {
         PaymentType paymentType = PaymentType.Cash;
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("data/payments.txt"));
         bufferedWriter.write("0,Cash,10.0\n");
@@ -105,7 +104,7 @@ class ServiceTest {
     }
 
     @Test
-    void soldTotalValid2Test() throws IOException {
+    public void soldTotalValid2Test() throws IOException {
         PaymentType paymentType = PaymentType.Cash;
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("data/payments.txt"));
         bufferedWriter.write("1,Card,10.0\n");
@@ -117,7 +116,7 @@ class ServiceTest {
     }
 
     @Test
-    void soldTotalInvalidTest() throws IOException {
+    public void soldTotalInvalidTest() throws IOException {
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("data/payments.txt"));
         bufferedWriter.write("1,Card,10.0\n");
         bufferedWriter.write("2,Card,100.0\n");

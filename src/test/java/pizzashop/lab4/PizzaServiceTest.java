@@ -25,14 +25,14 @@ public class PizzaServiceTest {
     static PaymentRepository payRepo;
 
     @BeforeAll
-    static void setUp(){
+    public static void setUp(){
         menuRepo=mock(MenuRepository.class);
         payRepo=mock(PaymentRepository.class);
         pizzaService=new PizzaService(menuRepo,payRepo);
     }
 
     @Test
-    void getTotalAmountTest(){
+    public void getTotalAmountTest(){
         Payment payment1=new Payment(1, PaymentType.Cash,10.0);
         Payment payment2=new Payment(1, PaymentType.Card,15.0);
         when(payRepo.getAll()).thenReturn(List.of(payment1,payment2));
@@ -40,7 +40,7 @@ public class PizzaServiceTest {
     }
 
     @Test
-    void addPaymentTest(){
+    public void addPaymentTest(){
         doNothing().when(payRepo).add(any(Payment.class));
         assertDoesNotThrow(() -> pizzaService.addPayment(1,PaymentType.Cash,10.0));
     }
